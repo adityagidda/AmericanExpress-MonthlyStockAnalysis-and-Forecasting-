@@ -1,0 +1,512 @@
+predict(model1,15)
+plot(forecast(model1, h=15))
+predict(model2,15)
+plot(forecast(model1, h=15))
+plot(forecast(model2, h=15))
+predict(model1,15)
+plot(forecast(model1, h=15))
+axp_forecast= forecast(axp.diff, h=20)
+plot(axp_forecast)
+nn_test= nnetar(axp.dayreturn)
+nn_forecast= forecast(nn_test, h=20)
+plot(nn_forecast)
+tbats_test= tbats(axp.dayreturn)
+tbats_forecast= forecast(tbats_test, h=20)
+plot(tbats_forecast)
+tbats_test= tbats(axp.diff)
+tbats_forecast= forecast(tbats_test, h=20)
+plot(tbats_forecast)
+nn_test= nnetar(axp.diff)
+nn_forecast= forecast(nn_test, h=20)
+plot(nn_forecast)
+source("http://www.rmetrics.org/Rmetrics.R")    ## this connects to the file and reads the R code there
+source("http://www.rmetrics.org/Rmetrics.R")    ## this connects to the file and reads the R code there
+install.Rmetrics()
+install.packages(pkgs = pkgs, ...)
+setwd ("C:/Users/jaswa/Desktop/Time Series/project")
+axpdaily=read.csv("axp.csv",header=T)
+axpdaily$Date
+axp.price= axpdaily$Adj.Close[length(axpdaily$Adj.Close):1]
+## this puts the data in proper      order (first line is the oldest)
+axp.date= axpdaily$Date[length(axpdaily$Adj.Close):1]
+axp.dayreturn=diff(axp.price)/ axp.price[-length(axp.price)] ## daily simple return
+axp.logreturn=diff(log(axp.price))  ## Cont compounded return
+hist(axp.dayreturn)
+hist(axp.logreturn)
+par(mfrow=c(1,2))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.1))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.3))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.8))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.5))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.5))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.6))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.6))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.6))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.6))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.6))
+par(mfrow=c(1,2))
+plot(1:length(axp.price),axp.price,type="l")
+plot(1:length(axp.dayreturn),axp.dayreturn,type="l")
+lines(1:length(axp.logreturn),axp.logreturn,col="red")
+lines(1:length(axp.dayreturn),axp.dayreturn,col="green")
+hist(axp.dayreturn, freq=F)
+points(density( axp.dayreturn),type="l",col="blue")
+hist(axp.dayreturn, freq=F,ylim=c(0,10))
+hist(axp.dayreturn, freq=F,ylim=c(0,8))
+hist(axp.dayreturn, freq=F,ylim=c(0,7))
+points(density( axp.dayreturn),type="l",col="blue")
+points(density( axp.dayreturn,width=0.03),type="l",col="lightblue")
+points(density( axp.dayreturn,width=0.05),type="l",col="lightgreen")
+hist(axp.logreturn, freq=F,ylim=c(0,7))
+hist(axp.logreturn, freq=F,ylim=c(0,8))
+points(density( axp.logreturn),type="l",col="red")
+par(mfrow=c(1,2))
+qqnorm(axp.dayreturn)
+#calcultes basic stats of logreturn
+mean(axp.logreturn)
+sd(axp.logreturn)
+library(fBasics) ## This loads the package fBasic
+basicStats(axp.logreturn) ## all the stats
+skewness(axp.dayreturn)
+## some stats can be acpcessed directly
+mean(axp.dayreturn)
+sd(axp.dayreturn)
+skewness(axp.dayreturn)
+basicStats( axp.dayreturn)
+t.test(axp.dayreturn)
+basicStats( axp.logreturn)
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+acf.test(axp.dayreturn)
+acf(axp.dayreturn)
+library(fUnitRoots)
+adftest(axp.dayreturn)
+library(fUnitRoots)
+adftest(axp.dayreturn)
+library(tseries)
+adftest(axp.dayreturn)
+library(forecast)
+adftest(axp.dayreturn)
+axp.diff=diff(axp.dayreturn)
+axp.ddiff=diff(axp.diff)
+acf(axp.ddiff)
+install.packages(tseries)
+"tseries"library(tseries)
+library(tseries)
+library(forecast)
+adftest(axp.dayreturn)
+installpackages(tseries)
+install.packages(tseries)
+source("http://www.rmetrics.org/Rmetrics.R")    ## this connects to the file and reads the R code there
+source("http://www.rmetrics.org/Rmetrics.R")    ## this connects to the file and reads the R code there
+install.Rmetrics()
+install.packages(pkgs = pkgs, ...)
+library(fUnitRoots)
+install.packages(tseries)
+library(tseries)
+library(forecast)
+adftest(axp.dayreturn)
+install.packages("tseries")
+library(tseries)
+adf.test(axp.dayreturn)
+tbats_test= tbats(axp.dayreturn)
+tbats_forecast= forecast(tbats_test, h=20)
+plot(tbats_forecast)
+library(forecast)
+tbats_test= tbats(axp.dayreturn)
+tbats_forecast= forecast(tbats_test, h=20)
+plot(tbats_forecast)
+nn_test= nnetar(axp.dayreturn)
+nn_forecast= forecast(nn_test, h=20)
+plot(nn_forecast)
+hist(axp.dayreturn, freq=F)
+points(density( axp.dayreturn),type="l",col="blue")
+hist(axp.dayreturn, freq=F,ylim=c(0,7))
+plot(nn_forecast)
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+tsdiag(model1)
+plot(model1$residuals,type='l')
+model7= arima(axp.dayreturn, order=c(0,0,1))
+model7
+tsdiag(model7)
+plot(model7$residuals,type='l')
+## Further analysis:
+poly6=c(1,-model7$coef[1:3])
+roots5=polyroot(poly6)
+roots5
+Mod(roots5)
+predict(model1,15)
+predict(model7,15)
+plot(forecast(model7, h=15))
+acf(model7$residuals^2)
+points(density( axp.dayreturn),type="l",col="blue")
+hist(axp.dayreturn, freq=F,ylim=c(0,7))
+hist(axp.logreturn, freq=F,ylim=c(0,8))
+points(density( axp.logreturn),type="l",col="red")
+par(mfrow=c(1,2))
+lines(1:length(axp.logreturn),axp.logreturn,col="red")
+lines(1:length(axp.dayreturn),axp.dayreturn,col="green")
+hist(axp.dayreturn, freq=F)
+points(density( axp.dayreturn),type="l",col="blue")
+hist(axp.dayreturn, freq=F,ylim=c(0,7))
+plot(1:length(axp.price),axp.price,type="l")
+plot(1:length(axp.dayreturn),axp.dayreturn,type="l")
+lines(1:length(axp.logreturn),axp.logreturn,col="red")
+lines(1:length(axp.dayreturn),axp.dayreturn,col="green")
+plot.ts(axp.dayreturn)
+plot.ts(axp.logreturn)
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+acf(axp.logreturn,lag=15) # Obtain the ACF plot
+pacf(axp.logreturn,lag=15)
+install.packages("tseries")
+install.packages("tseries")
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+tsdiag(model1)
+Box.test(model1$residuals,lag=10,type='Ljung')
+plot(model1$residuals,type='l')
+## Further analysis:
+poly6=c(1,-model1$coef[1:3])
+roots5=polyroot(poly6)
+roots5
+Mod(roots5)
+predict(model1,15)
+plot(forecast(model1, h=15))
+#ARMA models
+library(forecast)
+plot(forecast(model1, h=15))
+tail(axp.diff)
+tail(axp.ddiff)
+predict(model1,15)
+prad=predict(model1,15)
+tail(prad)
+inv_diff= diffinv(prad,xi=0.2719086)
+inv_diff= diffinv(prad$pred,xi=0.2719086)
+tail(inv_diff)
+inv_ddiff=diffinv(inv_diff,xi=0.08338528)
+tail(inv_ddiff)
+View(axpdaily)
+final_close=diffinv(inv_ddiff,xi=98.5800)
+tail(final_close)
+x=c(as.numeric(axp.date$Adj.close),final_close)
+x=c(as.numeric(axpdaily$Adj.close),final_close)
+plot.ts(x)
+x=c((axpdaily$Adj.close),final_close)
+plot.ts(x)
+length(x)
+length(axpdaily$Adj.close)
+View(axpdaily)
+axpdaily=read.csv("axp.csv",header=T)
+axpdaily$Date
+axpdaily$Adj.Close
+length(axpdaily$Adj.close)
+length(axpdaily$Adj.Close)
+length(axpdaily$Adj.Close)
+x=c((axpdaily$Adj.Close),final_close)
+plot.ts(x)
+source("http://www.rmetrics.org/Rmetrics.R")    ## this connects to the file and reads the R code there
+install.Rmetrics()
+install.packages(pkgs = pkgs, ...)
+library(tseries)
+#Loading the data
+setwd ("C:/Users/jaswa/Desktop/Time Series/project")
+axpdaily=read.csv("axp.csv",header=T)
+axpdaily$Date
+axp.price= axpdaily$Adj.Close[length(axpdaily$Adj.Close):1]
+## this puts the data in proper      order (first line is the oldest)
+axp.date= axpdaily$Date[length(axpdaily$Adj.Close):1]
+axp.dayreturn=diff(axp.price)/ axp.price[-length(axp.price)] ## daily simple return
+plot.ts(axp.dayreturn)
+axp.logreturn=diff(log(axp.price))  ## Cont compounded return
+plot.ts(axp.logreturn)
+hist(axp.dayreturn)
+hist(axp.logreturn)
+par(mfrow=c(1,2))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.6))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.6))
+par(mfrow=c(1,2))
+plot(1:length(axp.price),axp.price,type="l")
+plot(1:length(axp.dayreturn),axp.dayreturn,type="l")
+lines(1:length(axp.logreturn),axp.logreturn,col="red")
+lines(1:length(axp.dayreturn),axp.dayreturn,col="green")
+hist(axp.dayreturn, freq=F)
+qqnorm(axp.dayreturn)
+par(mfrow=c(1,1))
+qqnorm(axp.dayreturn)
+#basic stats of dayreturn
+library(fBasics) ## This loads the package fBasic
+#basic stats of dayreturn
+library(fBasics) ## This loads the package fBasic
+basicStats( axp.dayreturn)
+t.test(axp.logreturn)
+normalTest(axp.dayreturn,method="jb")
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+Box.test(axp.dayreturn,lag=10)
+Box.test(axp.dayreturn,lag=10,type="Ljung")
+length(axp.dayreturn)
+library(fUnitRoots)
+library(fUnitRoots)
+install.packages("tseries")
+install.packages("tseries")
+library(tseries)
+library(forecast)
+adf.test(axp.dayreturn)
+plot.ts(axp.dayreturn)
+axp.logreturn=diff(log(axp.price))  ## Cont compounded return
+plot.ts(axp.logreturn)
+hist(axp.dayreturn)
+hist(axp.logreturn)
+par(mfrow=c(1,2))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.6))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.6))
+par(mfrow=c(1,2))
+plot(1:length(axp.price),axp.price,type="l")
+plot(1:length(axp.dayreturn),axp.dayreturn,type="l")
+lines(1:length(axp.logreturn),axp.logreturn,col="red")
+lines(1:length(axp.dayreturn),axp.dayreturn,col="green")
+par(mfrow=c(1,1))
+qqnorm(axp.dayreturn)
+#basic stats of dayreturn
+library(fBasics) ## This loads the package fBasic
+basicStats( axp.dayreturn)
+t.test(axp.dayreturn)
+basicStats( axp.logreturn)
+t.test(axp.logreturn)
+normalTest(axp.dayreturn,method="jb")
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+Box.test(axp.dayreturn,lag=10)
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+#nnetar forecast
+nn_test= nnetar(axp.dayreturn)
+nn_forecast= forecast(nn_test, h=20)
+plot(nn_forecast)
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1= arima(axp.ddiff, order=c(4,0,0))
+#ARMA models
+library(forecast)
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+axp.diff=diff(axp.dayreturn)
+# 0.08338528
+axp.ddiff=diff(axp.diff)
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+prad=predict(model1,15)
+tail(prad)
+plot(forecast(model1, h=15))
+inv_diff= diffinv(prad$pred,xi=0.2719086)
+tail(inv_diff)
+inv_ddiff=diffinv(inv_diff,xi=0.08338528)
+tail(inv_ddiff)
+final_close=diffinv(inv_ddiff,xi=98.5800)
+tail(final_close)
+x=c((axpdaily$Adj.Close),final_close)
+plot.ts(x)
+length(axpdaily$Adj.Close)
+acf(model7$residuals^2)
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+model2= arima(axp.dayreturn, order=c(4,2,0))
+model2
+plot(forecast(model1, h=15))
+plot(forecast(model2, h=15))
+plot(forecast(model3, h=15))
+model3= arima(axp.dayreturn, order=c(2,2,0))
+model3
+tsdiag(model2)
+tsdiag(model1)
+tsdiag(model2)
+tsdiag(model2)
+tsdiag(model1)
+model1
+model2
+adf.test(axp.dayreturn)
+## Further analysis:
+poly6=c(1,-model2$coef[1:3])
+roots5=polyroot(poly6)
+roots5
+Mod(roots5)
+prad=predict(model1,15)
+prad=predict(model2,15)
+plot(forecast(model2, h=15))
+tsdiag(model2)
+tsdiag(model1)
+## Further analysis:
+poly6=c(1,-model1$coef[1:3])
+roots5=polyroot(poly6)
+roots5
+Mod(roots5)
+prad=predict(model1,15)
+plot(forecast(model1, h=15))
+#Loading the data
+setwd ("C:/Users/jaswa/Desktop/Time Series/project")
+axpdaily=read.csv("axp.csv",header=T)
+library(tseries)
+#Loading the data
+setwd ("C:/Users/jaswa/Desktop/Time Series/project")
+axpdaily=read.csv("axp.csv",header=T)
+axpdaily$Date
+axp.price= axpdaily$Adj.Close[length(axpdaily$Adj.Close):1]
+## this puts the data in proper      order (first line is the oldest)
+axp.date= axpdaily$Date[length(axpdaily$Adj.Close):1]
+axp.dayreturn=diff(axp.price)/ axp.price[-length(axp.price)] ## daily simple return
+plot.ts(axp.dayreturn)
+plot.ts(axp.dayreturn)
+axp.logreturn=diff(log(axp.price))  ## Cont compounded return
+plot.ts(axp.logreturn)
+hist(axp.dayreturn)
+hist(axp.logreturn)
+par(mfrow=c(1,2))
+hist(axp.dayreturn, freq=F,xlim=c(-0.25,0.6))
+hist(axp.logreturn,freq=F,xlim=c(-0.25,0.6))
+par(mfrow=c(1,2))
+plot(1:length(axp.price),axp.price,type="l")
+plot(1:length(axp.dayreturn),axp.dayreturn,type="l")
+lines(1:length(axp.logreturn),axp.logreturn,col="red")
+lines(1:length(axp.dayreturn),axp.dayreturn,col="green")
+par(mfrow=c(1,1))
+qqnorm(axp.dayreturn)
+#basic stats of dayreturn
+library(fBasics) ## This loads the package fBasic
+basicStats( axp.dayreturn)
+t.test(axp.dayreturn)
+normalTest(axp.dayreturn,method="jb")
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+acf(axp.dayreturn,lag=15) # Obtain the ACF plot
+pacf(axp.dayreturn,lag=15)
+Box.test(axp.dayreturn,lag=10)
+Box.test(axp.dayreturn,lag=10,type="Ljung")
+library(fUnitRoots)
+install.packages("tseries")
+install.packages("tseries")
+install.packages("tseries")
+library(tseries)
+library(forecast)
+adf.test(axp.dayreturn)
+axp.diff=diff(axp.dayreturn)
+tail(axp.diff)
+# 0.08338528
+axp.ddiff=diff(axp.diff)
+tail(axp.ddiff)
+acf(axp.ddiff)
+library(forecast)
+auto.arima(axp.ddiff)
+model1= arima(axp.ddiff, order=c(4,0,0))
+model1
+model1= arima(axp.ddiff, order=c(1,0,0))
+model1
+model2= arima(axp.dayreturn, order=c(1,0,1))
+model2
+model3= arima(axp.dayreturn, order=c(2,0,1))
+model3
+model4= arima(axp.dayreturn, order=c(2,0,0))
+model4
+model5= arima(axp.dayreturn, order=c(3,0,1))
+model5
+model6= arima(axp.dayreturn, order=c(3,0,0))
+model6
+model7= arima(axp.dayreturn, order=c(4,0,0))
+model1= arima(axp.ddiff, order=c(1,0,0))
+model1
+model2= arima(axp.ddiff, order=c(1,0,1))
+model2
+model3= arima(axp.ddiff, order=c(2,0,1))
+model3
+model4= arima(axp.ddiff, order=c(2,0,0))
+model4
+model5= arima(axp.ddiff, order=c(3,0,1))
+model5
+model6= arima(axp.ddiff, order=c(3,0,0))
+model6
+model7= arima(axp.ddiff, order=c(4,0,0))
+model7
+model1= arima(axp.ddiff, order=c(1,0,0))
+model1
+model2= arima(axp.ddiff, order=c(1,0,1))
+model2
+model3= arima(axp.ddiff, order=c(2,0,1))
+model3
+model4= arima(axp.ddiff, order=c(2,0,0))
+model4
+model5= arima(axp.ddiff, order=c(3,0,1))
+model5
+model6= arima(axp.ddiff, order=c(3,0,0))
+model6
+model7= arima(axp.ddiff, order=c(4,0,0))
+model7
+par(mai=c(0.5,0.5,0.5,0.5))
+tsdiag(model7)
+Box.test(model7$residuals,lag=10,type='Ljung')
+plot(model1$residuals,type='l')
+plot(model7$residuals,type='l')
+## Further analysis:
+poly6=c(1,-model7$coef[1:3])
+roots5=polyroot(poly6)
+roots5
+Mod(roots5)
+prad=predict(model1,15)
+tail(prad)
+plot(forecast(model1, h=15))
+prad=predict(model7,15)
+tail(prad)
+plot(forecast(model7, h=15))
+#tbats forecast
+tbats_test= tbats(axp.dayreturn)
+tbats_forecast= forecast(tbats_test, h=20)
+plot(tbats_forecast)
+#nnetar forecast
+nn_test= nnetar(axp.dayreturn)
+nn_forecast= forecast(nn_test, h=20)
+plot(nn_forecast)
+tail(prad)
+inv_diff= diffinv(prad$pred,xi=0.2719086)
+tail(inv_diff)
+inv_ddiff=diffinv(inv_diff,xi=0.08338528)
+tail(inv_ddiff)
+final_close=diffinv(inv_ddiff,xi=98.59071)
+tail(final_close)
+x=c((axpdaily$Adj.Close),final_close)
+plot.ts(x)
+acf(model7$residuals^2)
+final_close=diffinv(tbats_forecast,xi=98.59071)
+tail(axp.price)
+x = diffinv(nn_forecast$fitted, xi = 31.2986)
+x
+nn_forecast= forecast(nn_test, h=20)
+x = diffinv(nn_forecast$fitted, xi = 31.2986)
+x
+nn_forecast$fitted
+plot.ts(x)
+model7= arima(axp.ddiff, order=c(4,0,0))
+model7
+par(mai=c(0.5,0.5,0.5,0.5))
+tsdiag(model7)
+Box.test(model7$residuals,lag=10,type='Ljung')
+plot(model7$residuals,type='l')
+## Further analysis:
+poly6=c(1,-model7$coef[1:3])
+roots5=polyroot(poly6)
+roots5
+Mod(roots5)
+prad=predict(model7,15)
+tail(prad)
+plot(forecast(model7, h=15))
+inv_diff= diffinv(prad$pred,xi=0.2719086)
+tail(inv_diff)
+inv_ddiff=diffinv(inv_diff,xi=0.08338528)
+tail(inv_ddiff)
+final_close=diffinv(inv_ddiff,xi=98.59071)
+tail(final_close)
+x=c((axpdaily$Adj.Close),final_close)
+plot.ts(x)
+source('C:/Users/jaswa/Desktop/Time Series/project/Finance1-1.R')
